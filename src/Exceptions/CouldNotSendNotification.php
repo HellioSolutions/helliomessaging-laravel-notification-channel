@@ -18,9 +18,5 @@ class CouldNotSendNotification extends \Exception
     {
         return new static('Message content empty');
     }
-    
-    public static function messageTypeNotSetError()
-    {
-        return new static('You must set message type to either 0 or 1');
-    }
+   
 }
