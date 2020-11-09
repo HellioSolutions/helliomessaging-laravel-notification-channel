@@ -91,7 +91,7 @@ In order to let your Notification know which phone number you are sending to, ad
 ```php
 public function routeNotificationForHellioSMS()
 {
-    return $this->phone; // where phone is a cloumn in your users table;
+    return $this->phone; // where phone is a column in your users table;
 }
 ```
 
