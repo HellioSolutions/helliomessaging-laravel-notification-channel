@@ -11,7 +11,7 @@ class CouldNotSendNotification extends \Exception
 
     public static function msisdnNotSetError()
     {
-        return new static('Recipient phone number not set');
+        return new static('Recipient mobile number not set');
     }
 
     public static function messageNotSetError()
