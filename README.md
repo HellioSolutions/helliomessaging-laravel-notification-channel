@@ -79,8 +79,8 @@ class WelcomeSMS extends Notification
     public function toHellioSMS($notifiable)
     {
         return (new HellioMessage)
-			->from("Albert")
-			->to("2331234567890")
+			->from("HellioSMS")
+			->to("233242813656") //Add the country code to the number you wish to send to without the need to add the  +
            	 	->content("Yo Norris... Sup with you");
     }
 }
