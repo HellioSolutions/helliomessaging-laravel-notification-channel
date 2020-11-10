@@ -22,7 +22,7 @@ This package makes it easy to send notifications using [Helliomessaging](https:/
 
 ## Installation
 
-To get the latest version of Hellio Messaging Notification channel for Laravel 5.3+, simply require the project using [Composer](https://getcomposer.org):
+To get the latest version of Hellio Messaging Notification channel is intended for Laravel 5.5 and up, simply require the project using [Composer](https://getcomposer.org):
 
 ```bash
 $ composer require helliomessaging/helliomessaging-laravel-notification-channel
