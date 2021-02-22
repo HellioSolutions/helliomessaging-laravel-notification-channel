@@ -18,4 +18,5 @@ class CouldNotSendNotification extends \Exception
     {
         return new static('Message content empty');
     }
+   
 }
