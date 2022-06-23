@@ -35,7 +35,7 @@ class HellioSMSClient
      * @throws InvalidConfiguration
      * @throws GuzzleException
      */
-    public function send(HellioMessage $message)
+    public function send(HellioMessage $message): ResponseInterface
     {
         return $this->client->get($this->getApiURL() . $this->buildMessage($message, $this->clientID, $this->appSecret));
     }
@@ -59,7 +59,9 @@ class HellioSMSClient
     {
         $this->validateConfig($clientID, $appSecret);
 
-        $params = ['clientId' => $clientID, 'authKey' => sha1($clientID . $appSecret . date('YmdH'))];
+        $params = [
+            'clientId' => $clientID,
+            'authKey' => sha1($clientID . $appSecret . date('YmdH'))];
 
         foreach (get_object_vars($message) as $property => $value) {
             if (!is_null($value)) {
