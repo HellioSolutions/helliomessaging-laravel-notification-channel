@@ -4,12 +4,12 @@
 [![Total Downloads](https://poser.pugx.org/helliomessaging/helliomessaging-laravel-notification-channel/downloads)](https://packagist.org/packages/helliomessaging/helliomessaging-laravel-notification-channel)
 [![License](https://poser.pugx.org/helliomessaging/helliomessaging-laravel-notification-channel/license)](https://packagist.org/packages/helliomessaging/helliomessaging-laravel-notification-channel)
 
-This package makes it easy to send notifications using [Helliomessaging](https://helliomessaging.com/)
+This package makes it easy to send notifications using [Hellio Messaging](https://helliomessaging.com/)
 
 ## Content
 
 - [Installation](#installation)
-	- [Setting up the Helliomessaging service](#setting-up-the-hellio-service)
+	- [Setting up the Hellio Messaging Service](#setting-up-the-hellio-service)
 - [Usage](#usage)
 	- [Available Message methods](#available-message-methods)
 - [Changelog](#changelog)
@@ -34,9 +34,9 @@ If not, once package is installed, you need to register the service provider. Op
 * `NotificationChannels\Hellio\HellioServiceProvider::class`
 
 
-### Setting up the Hellio Messaging service
+### Setting up the Hellio Messaging Service
 
-Click on the [Profile & API Integration](https://app.helliomessaging.com/settings) menu on your Helliomessaging dashboard. Click on the API Keys & Webhooks tab and copy your `Client ID` and `Application Secret`
+First, you must have an account with Hellio. Once you've registered for an account, login into your account and click on the [Profile & API Integration](https://app.helliomessaging.com/settings) menu on your Hellio Messaging dashboard. Click on the API Keys & Webhooks tab and copy your `Client ID` and `Application Secret`
 
 In your terminal run
 ```bash
@@ -51,7 +51,7 @@ Paste your api keys in the `config/hellio.php` configuration file. You may copy 
 return [
     'config' => [
         'client_id' => env('HELLIO_CLIENT_ID'),
-        'app_secret' => env('HELLIO_APP_SECRET'),
+        'app_secret' => env('HELLIO_APP_SECRET')
     ],
 
 ];
@@ -59,11 +59,11 @@ return [
 
 Or 
 
-Add the `HELLIO_CLIENT_ID` and `HELLIO_APP_SECRET` to your `.env` file
+Add the `HELLIO_CLIENT_ID`, `HELLIO_APP_SECRET` and `HELLIO_SENDER_ID` to your `.env` file
 
 ## Usage
 
-Now you can use the channel in your `via()` method in any notification you want to send using helliomessaing:
+Now you can use the channel in your `via()` method in any notification you want to send using Hellio Messaging:
 ``` php
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Hellio\HellioChannel;
@@ -81,7 +81,8 @@ class WelcomeSMS extends Notification
         return (new HellioMessage)
 			->from("HellioSMS")
 			->to("233242813656") //Add the country code to the number you wish to send to without the need to add the  +
-           	 	->content("Yo Norris... Sup with you");
+           	 	->content("Welcome to Hellio Messaging, a new world of litmitless possibilities.")
+           	 	->messageType(0); //0 = text, 1 = flash
     }
 }
 ```
@@ -101,10 +102,11 @@ public function routeNotificationForHellioSMS()
 * `senderID($id)`: an alias for `from($from)`
 * `to($to)` : set the recipient's phone number
 * `msisdn($msisdn)`: an alias for `to($to)`
+* `messageType($messageType)`: an alias for `type($type)`
 * `content($content)` : set the message content
 * `message($message)`: an alias for `content($content)`
 
-Read more about the available methods on the [Hellio Messaging Documentation Page](https://helliomessaging.com/docs/messaging/api)
+Read more about the available methods on the [Hellio Messaging Documentation Portal](https://helliomessaging.com/docs/messaging/api)
 
 ## Testing
 
