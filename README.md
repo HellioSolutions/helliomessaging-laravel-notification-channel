@@ -59,7 +59,7 @@ return [
 
 Or 
 
-Add the `HELLIO_CLIENT_ID`, `HELLIO_APP_SECRET` and `HELLIO_SENDER_ID` to your `.env` file
+Add the `HELLIO_CLIENT_ID` and `HELLIO_APP_SECRET` to your `.env` file
 
 ## Usage
 
