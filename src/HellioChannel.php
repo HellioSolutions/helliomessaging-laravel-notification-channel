@@ -49,8 +49,8 @@ class HellioChannel
         if (is_null($message->msisdn) && !is_null($route)) {
             $message->msisdn = $route;
         }
-        
-        if (is_null($messageType->messageType)) {
+
+        if (is_null($message->messageType)) {
             throw CouldNotSendNotification::messageTypeNotSetError();
         }
 

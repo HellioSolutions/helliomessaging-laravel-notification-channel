@@ -4,8 +4,8 @@ namespace NotificationChannels\Hellio\Clients;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use NotificationChannels\Hellio\HellioMessage;
 use NotificationChannels\Hellio\Exceptions\InvalidConfiguration;
+use NotificationChannels\Hellio\HellioMessage;
 use Psr\Http\Message\ResponseInterface;
 
 class HellioSMSClient
@@ -43,7 +43,7 @@ class HellioSMSClient
     /**
      * @return string
      */
-    public function getApiURL()
+    public function getApiURL(): string
     {
         return 'https://helliomessaging.com/api/v2/sms?';
     }
@@ -55,7 +55,7 @@ class HellioSMSClient
      * @return string
      * @throws InvalidConfiguration
      */
-    public function buildMessage(HellioMessage $message, $clientID, $appSecret)
+    public function buildMessage(HellioMessage $message, $clientID, $appSecret): string
     {
         $this->validateConfig($clientID, $appSecret);
 
@@ -76,7 +76,7 @@ class HellioSMSClient
      * @return $this
      * @throws InvalidConfiguration
      */
-    public function validateConfig($clientID, $appSecret)
+    public function validateConfig($clientID, $appSecret): HellioSMSClient
     {
         if (is_null($clientID)) {
             throw InvalidConfiguration::clientIDNotSet();

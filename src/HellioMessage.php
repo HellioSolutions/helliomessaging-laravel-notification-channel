@@ -21,9 +21,9 @@ class HellioMessage
      * @var string
      */
     public $message;
-    
-      /**
-     * Set if message type is Text or Flash. [You can set 0 = Text and 1 = Flash]. By default it's set to 0 which is Text.
+
+    /**
+     * Set if message type is Text or Flash. [You can set 0 = Text and 1 = Flash]. By default, it's set to 0 which is Text.
      * @var string
      */
     public $messageType;
@@ -34,7 +34,7 @@ class HellioMessage
         $this->senderId = $senderId;
         $this->msisdn = $msisdn;
         $this->message = $message;
-        $this->message = $messageType;
+        $this->messageType = $messageType;
     }
 
     /**
@@ -42,7 +42,17 @@ class HellioMessage
      * @param $senderID
      * @return $this
      */
-    public function from($senderID)
+    public function senderID($senderID): HellioMessage
+    {
+        return $this->from($senderID);
+    }
+
+    /**
+     * Set the message sender's id.
+     * @param $senderID
+     * @return $this
+     */
+    public function from($senderID): HellioMessage
     {
         $this->senderId = $senderID;
 
@@ -50,13 +60,13 @@ class HellioMessage
     }
 
     /**
-     * Set the message sender's id.
-     * @param $senderID
+     * Set the recipient's phone number.
+     * @param $msisdn
      * @return $this
      */
-    public function senderID($senderID)
+    public function msisdn($msisdn): HellioMessage
     {
-        return $this->from($senderID);
+        return $this->to($msisdn);
     }
 
     /**
@@ -64,7 +74,7 @@ class HellioMessage
      * @param $msisdn
      * @return $this
      */
-    public function to($msisdn)
+    public function to($msisdn): HellioMessage
     {
         $this->msisdn = $msisdn;
 
@@ -72,13 +82,13 @@ class HellioMessage
     }
 
     /**
-     * Set the recipient's phone number.
-     * @param $msisdn
+     * Set the message content.
+     * @param $message
      * @return $this
      */
-    public function msisdn($msisdn)
+    public function message($message): HellioMessage
     {
-        return $this->to($msisdn);
+        return $this->content($message);
     }
 
     /**
@@ -86,7 +96,7 @@ class HellioMessage
      * @param $message
      * @return $this
      */
-    public function content($message)
+    public function content($message): HellioMessage
     {
         $this->message = $message;
 
@@ -94,21 +104,11 @@ class HellioMessage
     }
 
     /**
-     * Set the message content.
-     * @param $message
-     * @return $this
-     */
-    public function message($message)
-    {
-        return $this->content($message);
-    }
-    
-     /**
      * Set the message type.
      * @param $messageType
      * @return $this
      */
-    public function type($messageType)
+    public function type($messageType): HellioMessage
     {
         $this->messageType = $messageType;
 
@@ -120,7 +120,7 @@ class HellioMessage
      * @param $messageType
      * @return $this
      */
-    public function messageType($messageType)
+    public function messageType($messageType): HellioMessage
     {
         return $this->content($messageType);
     }
