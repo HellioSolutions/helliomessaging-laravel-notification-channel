@@ -21,12 +21,20 @@ class HellioMessage
      * @var string
      */
     public $message;
+    
+      /**
+     * Set if message type is Text or Flash. [You can set 0 = Text and 1 = Flash]. By default it's set to 0 which is Text.
+     * @var string
+     */
+    public $messageType;
 
-    public function __construct($senderId = null, $msisdn = null, $message = null)
+
+    public function __construct($senderId = null, $msisdn = null, $message = null, $messageType = 0)
     {
         $this->senderId = $senderId;
         $this->msisdn = $msisdn;
         $this->message = $message;
+        $this->message = $messageType;
     }
 
     /**
@@ -93,5 +101,27 @@ class HellioMessage
     public function message($message)
     {
         return $this->content($message);
+    }
+    
+     /**
+     * Set the message type.
+     * @param $messageType
+     * @return $this
+     */
+    public function type($messageType)
+    {
+        $this->messageType = $messageType;
+
+        return $this;
+    }
+
+    /**
+     * Set the message type.
+     * @param $messageType
+     * @return $this
+     */
+    public function messageType($messageType)
+    {
+        return $this->content($messageType);
     }
 }
