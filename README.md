@@ -1,4 +1,4 @@
-# Helliomessaging notification channel for Laravel
+# Hellio Messaging Laravel Notification Channel
 
 [![Latest Stable Version](https://poser.pugx.org/helliomessaging/helliomessaging-laravel-notification-channel/v/stable)](https://packagist.org/packages/helliomessaging/helliomessaging-laravel-notification-channel)
 [![Total Downloads](https://poser.pugx.org/helliomessaging/helliomessaging-laravel-notification-channel/downloads)](https://packagist.org/packages/helliomessaging/helliomessaging-laravel-notification-channel)
