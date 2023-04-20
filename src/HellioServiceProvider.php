@@ -12,7 +12,7 @@ class HellioServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__ . '/../config/hellio.php' => config_path('hellio.php'),
@@ -21,7 +21,9 @@ class HellioServiceProvider extends ServiceProvider
         $this->app->when(HellioChannel::class)
             ->needs(HellioSMSClient::class)
             ->give(function () {
+                /** @var array{client_id: string, app_secret: string}|null */
                 $config = config('hellio.config');
+
                 if (is_null($config)) {
                     throw InvalidConfiguration::missingConfig();
                 }
