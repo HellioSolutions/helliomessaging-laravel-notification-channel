@@ -61,10 +61,11 @@ class HellioSMSClient
 
         $params = [
             'clientId' => $clientID,
-            'authKey' => sha1($clientID . $appSecret . date('YmdH'))];
+            'authKey' => sha1($clientID . $appSecret . date('YmdH')),
+        ];
 
         foreach (get_object_vars($message) as $property => $value) {
-            if (!is_null($value)) {
+            if (! is_null($value)) {
                 $params[$property] = $value;
             }
         }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace NotificationChannels\Hellio\Tests;
 
 use NotificationChannels\Hellio\HellioChannel;
