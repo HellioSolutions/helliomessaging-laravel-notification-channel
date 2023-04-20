@@ -125,6 +125,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Norris Oduro Tei](https://github.com/Norris1z)
+- [Abdul Kudus](https://github.com/alhaji-aki)
 - [All Contributors](../../contributors)
 
 ## License
