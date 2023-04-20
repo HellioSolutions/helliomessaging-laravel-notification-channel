@@ -1,0 +1,16 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    level: 9
+
+    paths:
+        - src
+
+    ignoreErrors:
+        - "#Call to an undefined method Illuminate\\\\Notifications\\\\Notification::toHellioSMS\\(\\).#"
+        - "#Cannot call method routeNotificationFor\\(\\) on mixed.#"
+
+    tmpDir: build/phpstan
+
+    checkMissingIterableValueType: true

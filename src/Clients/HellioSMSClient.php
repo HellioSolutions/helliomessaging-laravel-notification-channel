@@ -10,19 +10,16 @@ use Psr\Http\Message\ResponseInterface;
 
 class HellioSMSClient
 {
-    public $client;
+    public Client $client;
 
-    public $clientID;
+    public string $clientID;
 
-    public $appSecret;
+    public string $appSecret;
 
     /**
      * HellioSMSClient constructor.
-     * @param $clientID
-     * @param $appSecret
-     * @param Client $client
      */
-    public function __construct($clientID, $appSecret, Client $client)
+    public function __construct(string $clientID, string $appSecret, Client $client)
     {
         $this->clientID = $clientID;
         $this->appSecret = $appSecret;
@@ -30,8 +27,6 @@ class HellioSMSClient
     }
 
     /**
-     * @param HellioMessage $message
-     * @return ResponseInterface
      * @throws InvalidConfiguration
      * @throws GuzzleException
      */
@@ -40,31 +35,25 @@ class HellioSMSClient
         return $this->client->get($this->getApiURL() . $this->buildMessage($message, $this->clientID, $this->appSecret));
     }
 
-    /**
-     * @return string
-     */
     public function getApiURL(): string
     {
         return 'https://helliomessaging.com/api/v2/sms?';
     }
 
     /**
-     * @param HellioMessage $message
-     * @param $clientID
-     * @param $appSecret
-     * @return string
      * @throws InvalidConfiguration
      */
-    public function buildMessage(HellioMessage $message, $clientID, $appSecret): string
+    public function buildMessage(HellioMessage $message, string $clientID, string $appSecret): string
     {
         $this->validateConfig($clientID, $appSecret);
 
         $params = [
             'clientId' => $clientID,
-            'authKey' => sha1($clientID . $appSecret . date('YmdH'))];
+            'authKey' => sha1($clientID . $appSecret . date('YmdH')),
+        ];
 
         foreach (get_object_vars($message) as $property => $value) {
-            if (!is_null($value)) {
+            if (! is_null($value)) {
                 $params[$property] = $value;
             }
         }
@@ -73,18 +62,15 @@ class HellioSMSClient
     }
 
     /**
-     * @param $clientID
-     * @param $appSecret
-     * @return $this
      * @throws InvalidConfiguration
      */
-    public function validateConfig($clientID, $appSecret): HellioSMSClient
+    public function validateConfig(string $clientID, string $appSecret): self
     {
-        if (is_null($clientID)) {
+        if (empty($clientID)) {
             throw InvalidConfiguration::clientIDNotSet();
         }
 
-        if (is_null($appSecret)) {
+        if (empty($appSecret)) {
             throw InvalidConfiguration::appSecretNotSet();
         }
 
