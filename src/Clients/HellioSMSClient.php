@@ -53,7 +53,7 @@ class HellioSMSClient
         ];
 
         foreach (get_object_vars($message) as $property => $value) {
-            if (!is_null($value)) {
+            if (! is_null($value)) {
                 $params[$property] = $value;
             }
         }
