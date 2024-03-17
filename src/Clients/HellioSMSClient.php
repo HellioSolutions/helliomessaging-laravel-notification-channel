@@ -32,7 +32,7 @@ class HellioSMSClient
      */
     public function send(HellioMessage $message): ResponseInterface
     {
-        return $this->client->get($this->getApiURL() . $this->buildMessage($message, $this->clientID, $this->appSecret));
+        return $this->client->get($this->getApiURL().$this->buildMessage($message, $this->clientID, $this->appSecret));
     }
 
     public function getApiURL(): string
@@ -49,7 +49,7 @@ class HellioSMSClient
 
         $params = [
             'clientId' => $clientID,
-            'authKey' => sha1($clientID . $appSecret . date('YmdH')),
+            'authKey' => sha1($clientID.$appSecret.date('YmdH')),
         ];
 
         foreach (get_object_vars($message) as $property => $value) {
