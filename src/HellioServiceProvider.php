@@ -15,7 +15,7 @@ class HellioServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/hellio.php' => config_path('hellio.php'),
+            __DIR__.'/../config/hellio.php' => config_path('hellio.php'),
         ]);
 
         $this->app->when(HellioChannel::class)

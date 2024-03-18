@@ -23,10 +23,9 @@ class HellioChannel
     /**
      * Send the given notification.
      *
-     * @param mixed $notifiable
-     * @param Notification $notification
-     *
+     * @param  mixed  $notifiable
      * @return ResponseInterface
+     *
      * @throws CouldNotSendNotification|Exceptions\InvalidConfiguration|GuzzleException
      */
     public function send($notifiable, Notification $notification)

@@ -1,7 +1,8 @@
 build
 vendor
-.phpunit.result.cache
-.php_cs.cache
-.php-cs-fixer.cache
 composer.lock
-.idea
+phpunit.xml
+.env
+.phpunit.result.cache
+.phpunit.cache
+.php_cs.cache

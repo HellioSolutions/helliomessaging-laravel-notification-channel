@@ -16,6 +16,6 @@ class InvalidConfiguration extends \Exception
 
     public static function missingConfig(): InvalidConfiguration
     {
-        return new self("Missing config file");
+        return new self('Missing config file');
     }
 }

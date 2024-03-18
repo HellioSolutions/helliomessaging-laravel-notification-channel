@@ -24,7 +24,6 @@ class HellioMessage
      */
     public ?int $messageType;
 
-
     public function __construct(?string $senderId = null, ?string $msisdn = null, ?string $message = null, ?int $messageType = 0)
     {
         $this->senderId = $senderId;
