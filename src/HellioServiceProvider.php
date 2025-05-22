@@ -31,7 +31,7 @@ class HellioServiceProvider extends ServiceProvider
                 return new HellioSMSClient(
                     $config['client_id'],
                     $config['app_secret'],
-                    new Client()
+                    new Client
                 );
             });
     }
