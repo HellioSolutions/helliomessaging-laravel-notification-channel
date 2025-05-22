@@ -12,5 +12,3 @@ parameters:
         - "#Cannot call method routeNotificationFor\\(\\) on mixed.#"
 
     tmpDir: build/phpstan
-
-    checkMissingIterableValueType: true

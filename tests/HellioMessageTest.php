@@ -9,10 +9,10 @@ class HellioMessageTest extends TestCase
 {
     public $message;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->message = new HellioMessage();
+        $this->message = new HellioMessage;
     }
 
     /** @test * */
